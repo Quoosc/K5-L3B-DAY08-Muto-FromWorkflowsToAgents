@@ -2,8 +2,8 @@
 
 ## Thông tin nhóm
 
-- Tên nhóm: Chưa cung cấp
-- Lớp: L3A
+- Tên nhóm: Muto
+- Lớp: L3B
 - Repo nhóm: `K5-L3B-DAY08-Muto-FromWorkflowsToAgents`
 - URL repo, nhánh nộp, commit chốt: https://github.com/Quoosc/K5-L3B-DAY08-Muto-FromWorkflowsToAgents (nhánh `main`; commit chốt sẽ cập nhật sau khi commit/push)
 
@@ -27,10 +27,10 @@ Gợi ý chia vai:
 
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
-| Hoàng Minh | Workflow + tích hợp | Chưa có commit | Chưa bàn giao test; cập nhật tên test sau khi có |
-| Phạm Trấn Quốc | Single agent | Chưa có commit | Chưa bàn giao test; cập nhật tên test sau khi có |
-| Trần Anh Dũng | Orchestrator + handoff | Chưa có commit | Chưa bàn giao test; cập nhật tên test sau khi có |
-| Nguyễn Quốc Quang Anh | Ledger + evaluation | Chưa commit | `src/tests/test_member4_host_edges.py` (đã thêm, 7 ca pass) |
+| Hoàng Minh | Workflow + tích hợp |  |  |
+| Phạm Trấn Quốc | Single agent |  |  |
+| Trần Anh Dũng | Orchestrator + handoff |  |  |
+| Nguyễn Quốc Quang Anh | Ledger + evaluation |  |  |
 
 ## Cá nhân
 
