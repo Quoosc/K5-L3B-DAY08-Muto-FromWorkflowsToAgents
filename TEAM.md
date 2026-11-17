@@ -152,3 +152,23 @@ Sao chép mục dưới đây cho từng thành viên.
 * `python -m pytest -q`: 84 passed, 248 deselected (tại thời điểm chạy trước khi gộp thêm test của bạn 4).
 * `python -m lab8.crash_test --count 20 --out reports/crash.json`: crash_safety 20/20.
 * Commit triển khai, test và báo cáo: `381881f`, `ad12a74`.
+
+## 2A202604120_NguyenQuocQuangAnh
+
+### Phần việc phụ trách
+
+* Ledger và đánh giá: bổ sung kiểm thử host, kiểm tra tích hợp các shape, chạy benchmark/crash và tổng hợp kết quả public.
+
+### Đóng góp cụ thể
+
+* Thêm `src/tests/test_member4_host_edges.py` với 7 ca kiểm tra approval, giới hạn tiền đã hoàn và crash/resume T14.
+* Sau khi nhận code các shape, chạy ma trận kiểm thử host/student và tạo benchmark bốn shape cùng crash report.
+* Tổng hợp số liệu, ghi nhận giới hạn cách tính cost và đề xuất workflow trong ADR.
+
+### Bằng chứng
+
+* Commit kỹ thuật/bằng chứng: `403cca7`.
+* Test bổ sung: `src/tests/test_member4_host_edges.py` — 7 ca pass.
+* Kiểm thử tích hợp: host 91 passed; student 248 passed.
+* Benchmark: workflow, single và orchestrator đều 70/70; swarm 69/70.
+* Crash suite: 20/20 cho host/swarm. Chưa có kết quả hidden chính thức.
