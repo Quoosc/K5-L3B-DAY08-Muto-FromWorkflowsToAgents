@@ -16,7 +16,7 @@ from lab8.shapes.orchestrator import run_claim
 from tests.conftest import BY_ID, CLAIMS, WORLD
 
 # Add "workflow" here once workflow.py is implemented to audit all three shapes.
-SHAPES_READY_FOR_TRACE_AUDIT = ["orchestrator", "single"]
+SHAPES_READY_FOR_TRACE_AUDIT = ["orchestrator", "single", "workflow"]
 
 
 def test_make_handoff_strips_unknown_facts_and_blocks_canary_or_write_tools():

@@ -29,7 +29,7 @@ Gợi ý chia vai:
 | --- | --- | --- | --- |
 | Hoàng Minh | Workflow + tích hợp |  |  |
 | Phạm Trấn Quốc | Single agent | `5d118a5` | `python -m pytest -q -m student -o addopts= -k single` — 62 passed |
-| Trần Anh Dũng | Orchestrator + handoff |  |  |
+| Trần Anh Dũng | Orchestrator + handoff | `381881f` | `src/tests/test_orchestrator_handoff_trace.py` (17 cases, 84 passed) |
 | Nguyễn Quốc Quang Anh | Ledger + evaluation |  |  |
 
 ## Cá nhân
