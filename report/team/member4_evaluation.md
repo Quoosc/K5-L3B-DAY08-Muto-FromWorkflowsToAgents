@@ -53,7 +53,7 @@ Chạy lại `python -m lab8.check_submission` tại commit `5bc8076`: 1 FAIL
 Ba shape đạt 12/12 public ở seed 11; benchmark và crash report được checker chấp nhận.
 
 - Nhóm xác nhận đề xuất workflow trong ADR; public chưa đủ xác nhận gate hidden.
-- Research card R1–R4 và một ablation: công việc chung, chưa có lựa chọn/nguồn từ nhóm.
+- Cập nhật sau đánh giá tích hợp: nhóm chọn R1; phiếu và ablation đã có tại `research_card.md`, `src/lab8/ablation_r1.py` và `src/reports/research_card_r1_ablation.json`. Cả hai cấu hình đạt 70/70; cost/success 57.190000 và 38.618571 VND mô phỏng. Thí nghiệm chỉ đổi số lời gọi đọc phụ, chưa đo scaling số agent độc lập.
 - Người 2 chưa có test mới đã thêm/sửa trong commit bàn giao; chạy test có sẵn
   không đáp ứng nguyên văn yêu cầu đóng góp test của từng người.
 - Hash chốt, LMS và quyền truy cập người chấm phải được xác nhận khi nộp.

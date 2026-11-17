@@ -52,6 +52,8 @@ giới hạn benchmark và field cố ý không ghi trước khi bảo vệ bài
 ## 6. Tự đánh giá
 
 Bằng chứng workspace cho thấy bộ public và host đều xanh, crash suite 20/20.
-Các giới hạn còn lại: môi trường phiên bản, hidden chưa phát/chấm, research card
-và ablation chưa hoàn thành. Đây là ghi nhận bằng chứng kỹ thuật; chưa có dữ kiện
+Research card đã được cập nhật theo lựa chọn R1 của nhóm, kèm ablation đọc phụ
+và report 140 trial; ba test bổ sung trong `src/tests/test_research_r1.py` đã pass.
+Các giới hạn còn lại: môi trường phiên bản, hidden chưa phát/chấm, chưa đo
+scaling số agent độc lập. Đây là ghi nhận bằng chứng kỹ thuật; chưa có dữ kiện
 về trải nghiệm tự thực hiện hoặc tự đánh giá cá nhân ngoài các lần chạy đã ghi.

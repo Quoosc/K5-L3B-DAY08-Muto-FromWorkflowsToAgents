@@ -67,6 +67,8 @@ Swarm fail duy nhất ở `R-swarm-C-002-s55`: ticket khai trễ 5 ngày, order 
 
 Kết quả kiểm thử tích hợp trong workspace:
 
+Các số 91/248 dưới đây là mốc tích hợp trước bổ sung R1. Sau khi thêm ba test ablation, `python -m pytest -q` đạt **94 passed, 248 deselected**; số liệu benchmark bốn shape vẫn lấy từ report gốc.
+
 | Kiểm tra | Kết quả | Phạm vi |
 | --- | --- | --- |
 | Host gate | 91 passed, 248 deselected | Test mặc định, gồm test bổ sung của nhóm |
@@ -77,7 +79,7 @@ Kết quả kiểm thử tích hợp trong workspace:
 
 Người 4 đề xuất **workflow** theo mục tiêu ít tự chủ nhất: đạt 70/70 public trial và không gọi model. Single cũng đạt toàn bộ public và có cost/success thấp hơn trong cách đếm hiện tại, nên không kết luận workflow rẻ nhất. Orchestrator chưa tăng độ đúng trên corpus này. Đề xuất và điều kiện đổi quyết định được ghi trong [ADR](decision_adr.md), cần nhóm xác nhận trước khi nộp.
 
-Chưa có `student_drop/` hoặc kết quả grader hidden. Vì vậy chưa xác nhận ngưỡng hidden 0,75, secret leak count hoặc approval bypass count chính thức. [Research card](research_card.md) và ablation chưa hoàn thành.
+Chưa có `student_drop/` hoặc kết quả grader hidden. Vì vậy chưa xác nhận ngưỡng hidden 0,75, secret leak count hoặc approval bypass count chính thức. [Research card](research_card.md) đã chọn R1 và có ablation 3→1 lời gọi điều tra: hai cấu hình đều pass 70/70; cost/success giảm từ 57.190000 xuống 38.618571 VND mô phỏng. Đây là phép đo số lời gọi đọc phụ, chưa đo scaling số agent độc lập hay chạy song song. Bằng chứng: `src/reports/research_card_r1_ablation.json`.
 
 ## 5. Khó khăn và cách xử lý
 
@@ -133,7 +135,7 @@ theo thời điểm chạy; kết quả tích hợp mới nhất được ghi �
 
 MockLLM có kết quả cố định theo seed, không đại diện model sản xuất; chi phí là mô phỏng và latency là `unavailable`. Steps đếm event trace, không phải số thao tác thực tế; các shape ghi trace ở mức chi tiết khác nhau. Prompt, số model/tool calls và cách đếm host write chưa giống nhau, nên benchmark chưa cô lập tác động topology bằng ablation.
 
-Bộ public ít claim và swarm có lỗi được thiết kế trước. Chưa có kết quả hidden, research card hoặc ablation để kiểm chứng giả thuyết nghiên cứu. Nhóm cần hoàn thành các phần này, xác nhận lựa chọn kiến trúc và tái lập bằng đúng phiên bản môi trường. Quyết định cần xem lại nếu hidden cho thấy workflow không đáp ứng yêu cầu, hoặc task mới tạo lợi ích agent/song song được đo rõ.
+Bộ public ít claim và swarm có lỗi được thiết kế trước. Ablation R1 chỉ kiểm hai lần đọc phụ trong orchestrator; chưa cô lập topology hoặc kiểm scaling nhiều agent độc lập. Nhóm cần có kết quả hidden, xác nhận lựa chọn kiến trúc và tái lập bằng đúng phiên bản môi trường. Quyết định cần xem lại nếu hidden cho thấy workflow không đáp ứng yêu cầu, hoặc task mới tạo lợi ích agent/song song được đo rõ.
 
 ## 8. Tài liệu tham khảo
 
@@ -142,4 +144,4 @@ Bộ public ít claim và swarm có lỗi được thiết kế trước. Chưa 
 - Implementation: `src/lab8/shapes/`, `src/lab8/policy.py`, `src/lab8/durability.py`, `src/lab8/handoff.py` và `src/lab8/runtime.py`.
 - Bằng chứng: `src/reports/benchmark.json`, `src/reports/crash.json`, `src/tests/test_member4_host_edges.py`, `src/tests/test_workflow.py`, `src/tests/test_orchestrator_handoff_trace.py`.
 
-Chưa bổ sung nguồn nghiên cứu bên ngoài cho research card.
+Nguồn R1 và phạm vi kết luận được ghi tại [research card](research_card.md), gồm paper *Towards a Science of Scaling Agent Systems* và bài tóm tắt của Google Research ngày 28/01/2026.
