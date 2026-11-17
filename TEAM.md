@@ -28,7 +28,7 @@ Gợi ý chia vai:
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
 | Hoàng Minh | Workflow + tích hợp | `ca4e254`, `1e54dd0` | `src/tests/test_workflow.py` (7 ca); student workflow 62 passed |
-| Phạm Trấn Quốc | Single agent | `5d118a5` | `python -m pytest -q -m student -o addopts= -k single` — 62 passed |
+| Phạm Trấn Quốc | Single agent | `5d118a5`, `f974e1e` | `src/tests/test_single_agent.py` (2 tests); Single Agent 62 passed |
 | Trần Anh Dũng | Orchestrator + handoff | `381881f`, `ad12a74` | `src/tests/test_orchestrator_handoff_trace.py` (23 ca) |
 | Nguyễn Quốc Quang Anh | Ledger + evaluation | `403cca7` | `src/tests/test_member4_host_edges.py` (7 ca pass); benchmark 4 shape và crash 20/20 |
 
@@ -83,13 +83,16 @@ Sao chép mục dưới đây cho từng thành viên.
 
 * Báo cáo cá nhân: `report/team/2A202604113_PhamTranQuoc.md`.
 * 62 test Single Agent pass.
-* Host suite: 54 passed.
+* Host suite: 93 passed.
 * Crash safety: 20/20.
 * Public benchmark Single Agent: pass rate 1.000, pass^5 1.000.
-* Host suite: 54 passed, 248 deselected.
+* Host suite: 93 passed, 248 deselected.
 * Syntax check bằng `py_compile`: đạt.
 * `git diff --check`: đạt.
 * Commit triển khai và báo cáo: `5d118a5`.
+* Commit test bổ sung: `f974e1e`.
+* Test bổ sung: `src/tests/test_single_agent.py`.
+* Test bổ sung pass: 2 passed.
 * Các seed benchmark: 11, 22, 33, 44, 55.
 * Phạm vi kết luận: chỉ Shape B.
 

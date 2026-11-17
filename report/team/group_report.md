@@ -57,8 +57,10 @@ Chi tiết đóng góp của từng thành viên nằm trong `TEAM.md` (bảng �
 - Quote đầy đủ được chuyển tới `durability.issue_refund`, không tự trừ history.
 - Trace chỉ ghi payload đã lọc, không ghi raw claim/order row hoặc secret.
 - Xử lý `needs_info`, `escalated`, `denied`, `failed` và `resolved`.
-- Bằng chứng: 62/62 test Single Agent, host suite 54 pass, crash 20/20.
+- Bằng chứng: 62/62 test Single Agent, host suite 93 pass, crash 20/20.
 - Benchmark riêng Shape B: pass rate 1.000, pass^5 1.000, variance 0.000000.
+- Commit test bổ sung của Shape B: `f974e1e`.
+- File test: `src/tests/test_single_agent.py`, gồm kiểm tra trace an toàn và retry idempotency; `2 passed`.
 
 Chi tiết implementation và tự đánh giá nằm trong báo cáo cá nhân của Phạm
 Trấn Quốc. Các số liệu benchmark bốn shape, ADR và research card vẫn là

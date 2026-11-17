@@ -121,7 +121,7 @@ Student command:
 Kết quả: `62 passed`.
 Host command:
 `python -m pytest -q`
-Kết quả: `54 passed, 248 deselected`.
+Kết quả: `93 passed, 248 deselected`.
 Crash command:
 `python -m lab8.crash_test --count 20 --out reports\single-crash.json`
 Kết quả: `crash_safety 20/20`.
@@ -165,11 +165,14 @@ tăng, cần benchmark lock contention của SQLite và race giữa các claim.
 | Không lộ secret | payload allowlist | trace checks |
 | Output thống nhất | `finish` | `common.py` |
 ## 16. Commit và tự đánh giá
-- Commit: `5d118a5`.
-- Nội dung: implementation Shape B và báo cáo cá nhân.
+- Commit implementation: `5d118a5`.
+- Commit test bổ sung: `f974e1e`.
+- Nội dung test bổ sung: trace Single Agent an toàn và retry giữ một refund/một audit.
 - File code: `src/lab8/shapes/single.py`.
 - File báo cáo: `report/team/2A202604113_PhamTranQuoc.md`.
 - Người thực hiện: Phạm Trấn Quốc / Quoosc.
+- File test bổ sung: `src/tests/test_single_agent.py`.
+- Kết quả test bổ sung: `2 passed`.
 Shape B đã hoàn thành theo contract của lab: agent chỉ đọc và đề xuất,
 host là nơi duy nhất ghi refund, quote dựa trên structured data, retry không
 tạo effect thứ hai, crash resume an toàn và trace có payload sạch.
