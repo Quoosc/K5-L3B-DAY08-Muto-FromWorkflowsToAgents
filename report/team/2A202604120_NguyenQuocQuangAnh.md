@@ -16,7 +16,7 @@ kết quả public và giới hạn để nhóm lựa chọn kiến trúc.
 
 ## 3. Đóng góp cụ thể
 
-- Commit kỹ thuật/bằng chứng: `403cca7`; bonus B2: `CODE_COMMIT_TBD`.
+- Commit kỹ thuật/bằng chứng: `403cca7`; bonus B2: `3b122cb`.
 - Thêm `src/tests/test_member4_host_edges.py`, 7 ca: approval 0/âm, approval_id
   không tồn tại, paid cap sau prior refund và crash/resume T14 trên kết nối mới
   tại cả ba điểm injection. Đáp án tiền viết trực tiếp theo luật.
@@ -64,4 +64,4 @@ về trải nghiệm tự thực hiện hoặc tự đánh giá cá nhân ngoài
 - Thêm 15 trace case tham chiếu cho ba fault variant: handoff làm lệch `delay_days`, chọn clause hết hạn, và bỏ bước kiểm approval.
 - Thêm 3 kiểm thử trong `src/tests/test_bonus_mast.py`; kiểm tra seed 55 của swarm được gắn `inter_agent_misalignment / handoff-fact-drift`.
 - Sinh `src/reports/bonus_mast.json`; trên các case dựng có chủ đích, exact agreement và Cohen's κ theo nhóm là 1.00. Kết quả này không phải đánh giá độc lập/blind.
-- Commit: `CODE_COMMIT_TBD`. Hidden grader và hidden safety counts chưa được cung cấp; bonus gate chưa thể xác nhận.
+- Commit: `3b122cb`. Hidden grader và hidden safety counts chưa được cung cấp; bonus gate chưa thể xác nhận.
