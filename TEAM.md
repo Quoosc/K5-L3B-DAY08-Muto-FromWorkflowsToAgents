@@ -23,7 +23,7 @@ Gợi ý chia vai:
 
 ## Bảng đóng góp
 
-`python -m lab8.check\\\_submission` đọc bảng này bằng máy: giữ nguyên tiêu đề `## Bảng đóng góp` và các cột. Mỗi người một dòng: commit có nội dung và ít nhất một test đã thêm hoặc sửa.
+`python -m lab8.check_submission` đọc bảng này bằng máy: giữ nguyên tiêu đề `## Bảng đóng góp` và các cột. Mỗi người một dòng: commit có nội dung và ít nhất một test đã thêm hoặc sửa.
 
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
@@ -37,14 +37,14 @@ Gợi ý chia vai:
 Mỗi thành viên đồng thời tạo một báo cáo riêng trong `report/` theo dạng:
 
 ```text
-report/team/MSSV\\\_HoTen.md
+report/team/MSSV_HoTen.md
 ```
 
-Ví dụ: `report/team/20241234\\\_NguyenVanAn.md`.
+Ví dụ: `report/team/20241234_NguyenVanAn.md`.
 
 Sao chép mục dưới đây cho từng thành viên.
 
-## MSSV\_HoTen
+## MSSV_HoTen
 
 ### Phần việc phụ trách
 
@@ -58,7 +58,7 @@ Sao chép mục dưới đây cho từng thành viên.
 
 *
 
-## 2A202604113\_PhamTranQuoc
+## 2A202604113_PhamTranQuoc
 
 ### Phần việc phụ trách
 
@@ -70,9 +70,9 @@ Sao chép mục dưới đây cho từng thành viên.
 ### Đóng góp cụ thể
 
 * Thay stub Single Agent bằng implementation hoàn chỉnh.
-* Kết nối `run\\\_react`, `Budget`, `Trace`, `finish` và `durability.issue\\\_refund`.
-* Xử lý chuỗi `get\\\_claim\\\_view` → `lookup\\\_order` → `compute\\\_compensation`.
-* Truyền quote đầy đủ cho host và chuyển tiếp `crash\\\_at` mà không bắt `InjectedCrash`.
+* Kết nối `run_react`, `Budget`, `Trace`, `finish` và `durability.issue_refund`.
+* Xử lý chuỗi `get_claim_view` → `lookup_order` → `compute_compensation`.
+* Truyền quote đầy đủ cho host và chuyển tiếp `crash_at` mà không bắt `InjectedCrash`.
 * Giữ giới hạn step và đếm model/tool calls trong `Budget`.
 * Xử lý đầy đủ các trạng thái của `RunResult`.
 * Không lấy số ngày trễ từ ticket để quyết định compensation.
@@ -81,13 +81,13 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Bằng chứng
 
-* Báo cáo cá nhân: `report/team/2A202604113\\\_PhamTranQuoc.md`.
+* Báo cáo cá nhân: `report/team/2A202604113_PhamTranQuoc.md`.
 * 62 test Single Agent pass.
 * Host suite: 54 passed.
 * Crash safety: 20/20.
 * Public benchmark Single Agent: pass rate 1.000, pass^5 1.000.
 * Host suite: 54 passed, 248 deselected.
-* Syntax check bằng `py\\\_compile`: đạt.
+* Syntax check bằng `py_compile`: đạt.
 * `git diff --check`: đạt.
 * Commit triển khai và báo cáo: `5d118a5`.
 * Các seed benchmark: 11, 22, 33, 44, 55.
@@ -95,7 +95,7 @@ Sao chép mục dưới đây cho từng thành viên.
 
 ### Quy trình thực hiện
 
-* Đọc `README.md`, `CHECKPOINTS.md`, `docs/contracts.md` và `docs/business\\\_rules.md`.
+* Đọc `README.md`, `CHECKPOINTS.md`, `docs/contracts.md` và `docs/business_rules.md`.
 * Đối chiếu `runtime.py`, `tools.py`, `durability.py`, `trace.py` và shape swarm reference.
 * Tạo môi trường Python 3.12 trong `src/.venv`.
 * Cài dependencies từ `src/requirements.txt`.
@@ -103,24 +103,23 @@ Sao chép mục dưới đây cho từng thành viên.
 * Đối chiếu kết quả với contract trước khi ghi vào báo cáo cá nhân.
 
 
-
-# 2A202604103\_HoangMinh
+## 2A202604103_HoangMinh
 
 ### Phần việc phụ trách
 
 * Shape A (`src/lab8/shapes/workflow.py`): chuỗi bước Python cố định; tiền do code tính, host kiểm duyệt và ghi refund.
-* Test cá nhân: `src/tests/test\\\_workflow.py`; benchmark riêng Shape A.
+* Test cá nhân: `src/tests/test_workflow.py`; benchmark riêng Shape A.
 
 ### Đóng góp cụ thể
 
-* Thay stub workflow, giữ nguyên chữ ký hàm và hướng dẫn của template; dùng get\_claim\_view, lookup\_order, compute\_compensation và finish.
-* Truyền quote đầy đủ và crash\_at vào issue\_refund; host xử lý approval, trần theo đơn và idempotency. Không đưa ticket/secret/PII vào trace.
+* Thay stub workflow, giữ nguyên chữ ký hàm và hướng dẫn của template; dùng get_claim_view, lookup_order, compute_compensation và finish.
+* Truyền quote đầy đủ và crash_at vào issue_refund; host xử lý approval, trần theo đơn và idempotency. Không đưa ticket/secret/PII vào trace.
 * Thêm 7 test, gồm 3 trường hợp crash/resume; tự chạy test và sinh báo cáo bằng công cụ của lab.
 
 ### Bằng chứng
 
 * Commit kỹ thuật: 1e54dd0.
 * Trên máy cá nhân: default pytest 61 passed, 248 deselected; student workflow 62 passed, 247 deselected.
-* `src/reports/benchmark\\\_workflow.json`: pass = pass^5 = 1.000; variance = 0.000000; cost/success = 34.29 VND mô phỏng; steps = 5.07.
-* `src/reports/crash.json`: host crash\_safety = 20/20; workflow có kiểm tra riêng cả ba cửa sổ crash trong `test\\\_workflow.py`.
-* Báo cáo cá nhân: `report/team/2A202604103\\\_HoangMinh.md`.
+* `src/reports/benchmark_workflow.json`: pass = pass^5 = 1.000; variance = 0.000000; cost/success = 34.29 VND mô phỏng; steps = 5.07.
+* `src/reports/crash.json`: host crash_safety = 20/20; workflow có kiểm tra riêng cả ba cửa sổ crash trong `test_workflow.py`.
+* Báo cáo cá nhân: `report/team/2A202604103_HoangMinh.md`.
