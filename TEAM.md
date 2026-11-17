@@ -126,3 +126,29 @@ Sao chép mục dưới đây cho từng thành viên.
 * `src/reports/benchmark_workflow.json`: pass = pass^5 = 1.000; variance = 0.000000; cost/success = 34.29 VND mô phỏng; steps = 5.07.
 * `src/reports/crash.json`: host crash_safety = 20/20; workflow có kiểm tra riêng cả ba cửa sổ crash trong `test_workflow.py`.
 * Báo cáo cá nhân: `report/team/2A202604103_HoangMinh.md`.
+
+
+## 2A202604037_TranAnhDung
+
+### Phần việc phụ trách
+
+* Shape C — Orchestrator & Bảo mật (`src/lab8/shapes/orchestrator.py`).
+* Đóng gói handoff qua `lab8.handoff.make_handoff` (`handoff.v1`) và chạy investigator chỉ đọc qua `lab8.runtime.run_readonly_investigators`.
+* Bảo đảm quote do code (`compute_compensation`) tính, truyền quote đầy đủ và `crash_at` tới `durability.issue_refund` (không bắt `InjectedCrash`).
+* Rà soát payload trace và viết test bảo mật handoff/trace cho cả 3 shape (`workflow`, `single`, `orchestrator`).
+
+### Đóng góp cụ thể
+
+* Triển khai hoàn chỉnh Shape C trong `src/lab8/shapes/orchestrator.py` (đủ các nhánh `failed`, `needs_info`, `escalated`, `denied`, `resolved`).
+* Tách bạch ranh giới bảo mật: `get_claim_view` + `make_handoff` allowlist, không truyền `parent_secret`, `raw_headers` hay raw order PII vào handoff hoặc trace.
+* Tạo bộ test `src/tests/test_orchestrator_handoff_trace.py` (23 test case parametrize) kiểm tra allowlist handoff, `Trace contract v1`, `approval_claim_mismatch`, crash/resume và quét secret/PII trên cả 3 shape.
+* Viết phần mô tả Shape C, handoff sanitization và bảo mật trace trong `report/team/group_report.md` và `report/team/decision_adr.md`.
+
+### Bằng chứng
+
+* Báo cáo cá nhân: `report/team/2A202604037_TranAnhDung.md`.
+* File triển khai & test: `src/lab8/shapes/orchestrator.py`, `src/tests/test_orchestrator_handoff_trace.py`.
+* `python -m pytest -q -m student -o addopts=`: 248 passed (mỗi shape `workflow`, `single`, `orchestrator`, `swarm` đạt 62/62).
+* `python -m pytest -q`: 84 passed, 248 deselected (tại thời điểm chạy trước khi gộp thêm test của bạn 4).
+* `python -m lab8.crash_test --count 20 --out reports/crash.json`: crash_safety 20/20.
+* Commit triển khai, test và báo cáo: `381881f`, `ad12a74`.
