@@ -1,6 +1,7 @@
 # Bonus report: B2
 
 - **Topic + nguồn:** B2, *Why Do Multi-Agent LLM Systems Fail?* (MAST, NeurIPS 2025), lecture slides 35 and 45; taxonomy is system design, inter-agent misalignment, and task verification.
+- **Thực hiện:** Phạm Trấn Quốc (2A202604113), có Codex hỗ trợ code và kiểm tra.
 - **CLAIM:** MAST groups 14 annotated failure modes into those three categories; its source reports inter-annotator agreement κ = 0.88.
 - **BOUNDARY:** This is a trace-based rule audit of the lab's MockLLM and public 14-claim corpus. It does not validate MAST prevalence or agreement on production agents.
 - **HYPOTHESIS:** The swarm's C-002/seed-55 failure is inter-agent misalignment because the structured order says 2 delay days while the agent acts on 5; checking agent claims against structured facts should catch it.

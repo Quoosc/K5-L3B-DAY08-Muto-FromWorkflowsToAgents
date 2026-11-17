@@ -183,3 +183,12 @@ benchmark riêng của Shape B.
 ### Xác nhận phạm vi
 
 Báo cáo này chỉ ghi nhận phần việc và bằng chứng do Phạm Trấn Quốc thực hiện.
+
+## 17. Bonus B2 — audit lỗi theo MAST
+
+- Thực hiện bonus B2: thêm `src/bonus/mast_tag.py` để đọc benchmark và trace, gắn nhãn lỗi theo ba nhóm MAST kèm lý do.
+- Xây dựng 15 trace case cho ba fault variant: handoff làm lệch `delay_days`, chọn clause hết hạn, và bỏ bước kiểm approval.
+- Thêm 3 test trong `src/tests/test_bonus_mast.py`; kiểm tra swarm C-002/seed 55 được phân loại là `inter_agent_misalignment / handoff-fact-drift`.
+- Sinh `src/reports/bonus_mast.json` và viết `report/team/bonus_report.md`. Agreement trên các case dựng có chủ đích là 15/15; đây không phải đánh giá độc lập/blind.
+- Commit bonus: `3b122cb`, `bbb8736`; hồ sơ/ADR: `7057abb`.
+- Codex hỗ trợ triển khai và kiểm tra; hidden grader chưa có trong workspace nên bonus gate hidden chưa xác nhận.
