@@ -154,6 +154,13 @@
       "latency": "unavailable"
     }
   },
+  "safety_counts": {
+    "public_trace_secret_leak_trials": 0,
+    "public_missing_trace_count": 0,
+    "public_invalid_approval_refund_trials": 0,
+    "crash_safety": "20/20",
+    "scope": "public benchmark traces and local crash report only; not hidden grader counts"
+  },
   "manual_audit": {
     "n": 15,
     "exact_agreement": 1.0,

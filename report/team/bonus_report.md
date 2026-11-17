@@ -5,7 +5,7 @@
 - **BOUNDARY:** This is a trace-based rule audit of the lab's MockLLM and public 14-claim corpus. It does not validate MAST prevalence or agreement on production agents.
 - **HYPOTHESIS:** The swarm's C-002/seed-55 failure is inter-agent misalignment because the structured order says 2 delay days while the agent acts on 5; checking agent claims against structured facts should catch it.
 - **Biến cố định / thay đổi:** Fixed the committed public benchmark, claims, seeds, pricing, and trace contract. Added deterministic tags and three intentionally faulty trace variants: dropped delay in handoff, expired policy clause, and omitted approval check.
-- **Lệnh tái lập:** From `src/`: `python -m bonus.mast_tag`; tests: `python -m pytest -q tests/test_bonus_mast.py`.
+- **Lệnh tái lập:** From `src/`: `python -m lab8.benchmark --shapes workflow,single,orchestrator,swarm --cases data/public_claims.jsonl --seeds 11,22,33,44,55 --out reports/benchmark.json`; then `python -m lab8.crash_test --count 20 --out reports/crash.json`; then `python -m bonus.mast_tag`; tests: `python -m pytest -q tests/test_bonus_mast.py`.
 - **File report + run id:** `src/reports/bonus_mast.json`; observed failure `R-swarm-C-002-s55`.
 
 ## Kết quả
@@ -20,6 +20,8 @@ Numbers below are read from `reports/bonus_mast.json` and the same public benchm
 | swarm | 0.986 | 0.929 | 0.000816 | 49.57 | 0 / 1 / 0 |
 
 The swarm failure is `status resolved != denied`. Its trace records structured `delay_days=2` and a `model_override` of 5, so the tagger classifies it as **inter-agent misalignment / handoff-fact-drift**. A fitting mitigation is to preserve structured facts across handoff and validate agent claims against the order before quote/commit. The injected stale-policy and approval-omission variants exercise system-design and task-verification rules. Local approval/trace tests pass and crash safety is 20/20; no official hidden safety counts are available in this workspace.
+
+Available-public safety counts from the generated JSON: secret-marker trace trials **0**, missing trace files **0**, refunds on public claims marked as lacking valid approval **0**, crash safety **20/20**. These counts cover only this local public run.
 
 ## Kết luận
 
