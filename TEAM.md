@@ -28,7 +28,7 @@ Gợi ý chia vai:
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
 | Hoàng Minh | Workflow + tích hợp |  |  |
-| Phạm Trấn Quốc | Single agent |  |  |
+| Phạm Trấn Quốc | Single agent | `5d118a5` | `python -m pytest -q -m student -o addopts= -k single` — 62 passed |
 | Trần Anh Dũng | Orchestrator + handoff |  |  |
 | Nguyễn Quốc Quang Anh | Ledger + evaluation |  |  |
 
@@ -57,3 +57,47 @@ Sao chép mục dưới đây cho từng thành viên.
 ### Bằng chứng
 
 -
+
+## 2A202604113_PhamTranQuoc
+
+### Phần việc phụ trách
+
+- Shape B — Single Agent.
+- Triển khai vòng ReAct tối đa 8 bước trong `src/lab8/shapes/single.py`.
+- Giữ model ở ranh giới read-only; code/host chịu trách nhiệm quote, approval và refund.
+- Bảo đảm idempotency, per-order cap, crash/resume và trace không lộ secret/PII.
+
+### Đóng góp cụ thể
+
+- Thay stub Single Agent bằng implementation hoàn chỉnh.
+- Kết nối `run_react`, `Budget`, `Trace`, `finish` và `durability.issue_refund`.
+- Xử lý chuỗi `get_claim_view` → `lookup_order` → `compute_compensation`.
+- Truyền quote đầy đủ cho host và chuyển tiếp `crash_at` mà không bắt `InjectedCrash`.
+- Giữ giới hạn step và đếm model/tool calls trong `Budget`.
+- Xử lý đầy đủ các trạng thái của `RunResult`.
+- Không lấy số ngày trễ từ ticket để quyết định compensation.
+- Không tự trừ refund history trước khi gọi host.
+- Giữ trace ở mức payload allowlist, không ghi raw claim/order row.
+
+### Bằng chứng
+
+- Báo cáo cá nhân: `report/team/2A202604113_PhamTranQuoc.md`.
+- 62 test Single Agent pass.
+- Host suite: 54 passed.
+- Crash safety: 20/20.
+- Public benchmark Single Agent: pass rate 1.000, pass^5 1.000.
+- Host suite: 54 passed, 248 deselected.
+- Syntax check bằng `py_compile`: đạt.
+- `git diff --check`: đạt.
+- Commit triển khai và báo cáo: `5d118a5`.
+- Các seed benchmark: 11, 22, 33, 44, 55.
+- Phạm vi kết luận: chỉ Shape B.
+
+### Quy trình thực hiện
+
+- Đọc `README.md`, `CHECKPOINTS.md`, `docs/contracts.md` và `docs/business_rules.md`.
+- Đối chiếu `runtime.py`, `tools.py`, `durability.py`, `trace.py` và shape swarm reference.
+- Tạo môi trường Python 3.12 trong `src/.venv`.
+- Cài dependencies từ `src/requirements.txt`.
+- Chạy smoke, student matrix, host suite, crash suite và benchmark public.
+- Đối chiếu kết quả với contract trước khi ghi vào báo cáo cá nhân.

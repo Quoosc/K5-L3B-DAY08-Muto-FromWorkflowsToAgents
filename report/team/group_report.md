@@ -38,6 +38,22 @@ Lỗi gặp phải (kèm lệnh, output hoặc ảnh chụp) và cách nhóm x�
 
 Chi tiết đóng góp của từng thành viên nằm trong `TEAM.md` (bảng đóng góp) và báo cáo cá nhân `report/team/MSSV_HoTen.md`.
 
+### Phạm Trấn Quốc — Single Agent
+
+- Hoàn thiện `src/lab8/shapes/single.py` với ReAct loop tối đa 8 bước.
+- Agent chỉ dùng read-only tools: `get_claim_view`, `lookup_order`,
+  `compute_compensation`.
+- Host là nơi duy nhất thực hiện refund, approval và per-order cap.
+- Quote đầy đủ được chuyển tới `durability.issue_refund`, không tự trừ history.
+- Trace chỉ ghi payload đã lọc, không ghi raw claim/order row hoặc secret.
+- Xử lý `needs_info`, `escalated`, `denied`, `failed` và `resolved`.
+- Bằng chứng: 62/62 test Single Agent, host suite 54 pass, crash 20/20.
+- Benchmark riêng Shape B: pass rate 1.000, pass^5 1.000, variance 0.000000.
+
+Chi tiết implementation và tự đánh giá nằm trong báo cáo cá nhân của Phạm
+Trấn Quốc. Các số liệu benchmark bốn shape, ADR và research card vẫn là
+trách nhiệm chung của nhóm.
+
 ## 7. Hạn chế và hướng cải thiện
 
 MockLLM không phải model sản xuất; latency là `unavailable`. Nêu thêm giới hạn của nhóm và điều kiện làm kết luận thay đổi.
