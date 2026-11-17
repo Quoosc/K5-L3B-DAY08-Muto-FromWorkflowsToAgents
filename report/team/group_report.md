@@ -4,19 +4,17 @@ Tối đa 5 trang ngoài phụ lục. Số liệu lấy từ file trong `src/rep
 
 ## 1. Thông tin nhóm
 
-- Tên nhóm:
+- Tên nhóm: Muto
 - Thành viên: xem `TEAM.md`
-- Commit chốt (trùng `report/team/decision_adr.md`):
+- Commit chốt (trùng `report/team/decision_adr.md`): 403cca7 (code và bằng chứng đánh giá public)
 
 ## 2. Mục tiêu và cách tiếp cận
 
-Nhóm hiểu bài toán thế nào, chia việc ra sao, thứ tự làm bốn shape.
-
-...
+Cùng xử lý claim theo bốn shape, giữ tiền và approval trong code/host. Hoàng Minh phụ trách workflow và tích hợp; Phạm Trấn Quốc phụ trách single; Trần Anh Dũng phụ trách orchestrator/handoff; Nguyễn Quốc Quang Anh phụ trách kiểm thử host và đánh giá. Người 4 kiểm thử host trước, sau đó chạy toàn bộ ma trận và benchmark khi nhận đủ ba shape.
 
 ## 3. Giải pháp
 
-Mô tả ba shape nhóm viết (workflow, single, orchestrator): mỗi shape đọc gì, quyết định gì, gọi host ra sao. Chỉ rõ ranh giới code / model (tham khảo [docs/architecture.md](../../docs/architecture.md)), cách handoff được sanitize và trace ghi những event nào.
+Workflow chạy các bước Python cố định; single dùng run_react tối đa 8 bước với worker=True. Cả hai lấy claim view, kiểm order theo principal, quote bằng compute_compensation rồi truyền quote đầy đủ cho host. Single gọi MockLLM nhưng không dùng kết quả để chọn tool: decide hiện là các nhánh Python. Ba shape lấy effect/audit từ ledger qua finish và để crash truyền ra ngoài.
 
 ### Shape C — Orchestrator & Bảo mật (Handoff + Trace)
 
@@ -31,17 +29,20 @@ Mô tả ba shape nhóm viết (workflow, single, orchestrator): mỗi shape đ�
 
 ## 4. Kết quả
 
-Bảng so sánh 4 shape trên bộ public (từ `src/reports/benchmark.json`): pass rate, pass^5, seed min–max, variance, cost/success, mean/p95 steps. Kèm crash safety (`src/reports/crash.json`) và, nếu có, kết quả tự kiểm trên `student_drop/`.
+| Shape | Pass rate | Pass^5 | Seed min–max | Variance | Cost/success VND | Mean/p95 steps |
+| --- | --- | --- | --- | --- | --- | --- |
+| workflow | 1.000000 | 1.000000 | 1.000000–1.000000 | 0.000000000 | 34.285714 | 5.071429/6 |
+| single | 1.000000 | 1.000000 | 1.000000–1.000000 | 0.000000000 | 30.087143 | 2.000000/2 |
+| orchestrator | 1.000000 | 1.000000 | 1.000000–1.000000 | 0.000000000 | 57.190000 | 4.714286/5 |
+| swarm | 0.985714 | 0.928571 | 0.928571–1.000000 | 0.000816327 | 49.566957 | 2.800000/3 |
 
-...
+Nguồn: `src/reports/benchmark.json`, 14 claim × 5 seed × 4 shape. Host gate 91 pass; student matrix 248 pass; crash suite 20/20. Swarm fail duy nhất C-002 seed 55. Hidden chưa được phát/chấm. Chi tiết giới hạn và lệnh tái lập: `report/team/member4_evaluation.md`.
 
 Quyết định kiến trúc và lý do: xem `report/team/decision_adr.md`. Phiếu nghiên cứu và ablation: xem `report/team/research_card.md`.
 
 ## 5. Khó khăn và cách xử lý
 
-Lỗi gặp phải (kèm lệnh, output hoặc ảnh chụp) và cách nhóm xử lý.
-
-...
+Môi trường người 4 hiện dùng Python 3.14.10/pytest 9.2.0, ngoài dải phiên bản lab. Các lệnh kiểm thử public xanh nhưng cần chạy lại trên Python 3.11–3.13 và pytest <9 trước khi nộp. Chưa có student_drop nên không chạy self-check hidden.
 
 ## 6. Tổng hợp đóng góp
 
@@ -70,12 +71,14 @@ trách nhiệm chung của nhóm.
 - Rà soát payload trace và viết bộ test bảo mật `src/tests/test_orchestrator_handoff_trace.py` (23 test case parametrize) kiểm tra allowlist handoff, `Trace contract v1`, `approval_claim_mismatch`, crash/resume và chống rò `CANARY_SECRET_*` / PII trên cả 3 shape (`workflow`, `single`, `orchestrator`).
 - Bằng chứng: 62/62 test `student` cho `orchestrator` (248/248 toàn ma trận), `pytest -q` 84 passed, crash suite 20/20.
 
+### Nguyễn Quốc Quang Anh — Ledger + evaluation
+
+Commit `403cca7`: thêm 7 ca host edge, chạy 91 test host và 248 test student, sinh benchmark bốn shape và crash report 20/20. Tổng hợp số liệu, rà giới hạn, chuẩn bị ADR. Báo cáo cá nhân: `2A202604120_NguyenQuocQuangAnh.md`.
+
 ## 7. Hạn chế và hướng cải thiện
 
-MockLLM không phải model sản xuất; latency là `unavailable`. Nêu thêm giới hạn của nhóm và điều kiện làm kết luận thay đổi.
-
-...
+MockLLM không phải model sản xuất; latency unavailable. Workflow tính tool cost cho issue_refund còn các shape khác không tính lời gọi ghi; trace có mức chi tiết khác nhau, nên steps và cost cần diễn giải theo cách đếm hiện tại. Chưa cô lập topology bằng ablation; research card chưa hoàn tất. Đề xuất workflow cần được nhóm xác nhận và xem lại sau hidden/task mới.
 
 ## 8. Tài liệu tham khảo
 
-...
+`README.md`, `RULES.md`, `RUBRIC.md`, `docs/business_rules.md`, `docs/contracts.md`, `docs/metrics.md`, source ba shape và hai file report do CLI lab sinh. Chưa bổ sung nguồn nghiên cứu bên ngoài cho research card.

@@ -3,23 +3,32 @@
 Điền sau dấu `:` trên cùng dòng, không xóa nhãn. Giảng viên và `python -m lab8.check_submission` (chạy trong `src/`) đọc các dòng này bằng máy. Không đổi tên hay dời file này khỏi `report/team/`.
 `Shape chọn` phải là đúng một trong: `workflow`, `single`, `orchestrator`, `swarm`. Đây là shape được chấm cổng hidden.
 
-- Shape chọn:
-- Commit hash:
-- Run id dẫn chứng:
-- Pass rate / pass^5 / seed min-max / variance:
-- Cost per success (mô phỏng, VND):
-- Crash safety:
-- Secret leak / approval bypass:
+- Shape chọn: workflow
+- Commit hash: 403cca7 (code và bằng chứng đánh giá public)
+- Run id dẫn chứng: R-workflow-C-001-s11; R-swarm-C-002-s55; src/reports/benchmark.json
+- Pass rate / pass^5 / seed min-max / variance: public 1.0 / 1.0 / 1.0–1.0 / 0.0; hidden chưa được chấm
+- Cost per success (mô phỏng, VND): 34.285714285714285
+- Crash safety: 20/20 (src/reports/crash.json, host/swarm); T12 student và 3 cửa sổ crash workflow đều pass
+- Secret leak / approval bypass: không phát hiện qua các test public đã chạy; chưa có counts hidden chính thức, không suy thành hidden = 0
 
 Ví dụ một dòng đã điền: `- Shape chọn: workflow`, `- Crash safety: 20/20 (src/reports/crash.json)`.
 
 ## Vì sao shape này
 
-Viết 1 đoạn. So cùng corpus và cùng seed, không so với một lần chạy lẻ.
+Đề xuất kỹ thuật của người 4 là workflow: đạt 70/70 public trial, pass^5 = 1.0,
+không gọi model và có luồng cố định phù hợp bài toán hiện tại. Single và
+orchestrator cũng đạt 70/70; swarm đạt 69/70, fail C-002 seed 55 vì tin ticket.
+Đây là lựa chọn dựa trên public, cần cả nhóm xác nhận trước khi nộp và cần hidden
+để biết có đạt ngưỡng 0.75 hay không. Không tuyên bố workflow rẻ nhất:
+single có cost/success 30.09 so với workflow 34.29 trong lần đo hiện tại.
 
 ## Có đáng đổi lấy multi-agent không
 
-Nếu pass nhỉnh hơn mà cost và variance cao hơn, nhóm giữ hay đổi? Điều kiện nào làm quyết định đảo lại?
+Public chưa cho thấy tăng pass khi dùng orchestrator; cost/success là 57.19.
+Chọn mức tự chủ thấp nhất đáp ứng công việc theo mục tiêu lab. Quyết định cần
+xem lại nếu hidden cho thấy workflow thiếu khả năng xử lý cần thiết, hoặc task
+mới cho phép phân rã song song/triển khai qua ranh giới agent có lợi được đo rõ.
+Không suy rộng thành kết luận về mọi hệ thống multi-agent.
 
 ## Trace và bằng chứng
 
@@ -38,3 +47,11 @@ Nếu pass nhỉnh hơn mà cost và variance cao hơn, nhóm giữ hay đổi? 
 ## Giới hạn
 
 MockLLM không phải model sản xuất. Latency để `unavailable`. Không sửa JSON cho đủ 0.75.
+
+Chi phí hiện bị ảnh hưởng cách ghi Budget: workflow tính thêm tool cost cho
+`issue_refund`, còn single/orchestrator/swarm không tính lời gọi ghi này.
+Single gọi MockLLM nhưng bỏ kết quả; nhánh Python trong `decide` chọn hành động.
+Các lần gọi model và tool khác nhau giữa các shape, vì vậy so sánh này chưa
+cô lập topology. Steps là số event trace, không phải số thao tác thực tế.
+Môi trường chạy người 4 là Python 3.14.10/pytest 9.2.0, ngoài phiên bản lab quy định;
+cần tái lập trên Python 3.11–3.13 và pytest >=8.3.4,<9.

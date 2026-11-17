@@ -27,10 +27,10 @@ Gợi ý chia vai:
 
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
-| Hoàng Minh | Workflow + tích hợp |  |  |
+| Hoàng Minh | Workflow + tích hợp | `ca4e254`, `1e54dd0` | `src/tests/test_workflow.py` (7 ca) |
 | Phạm Trấn Quốc | Single agent | `5d118a5` | `python -m pytest -q -m student -o addopts= -k single` — 62 passed |
-| Trần Anh Dũng | Orchestrator + handoff | `381881f` | `src/tests/test_orchestrator_handoff_trace.py` (17 cases, 84 passed) |
-| Nguyễn Quốc Quang Anh | Ledger + evaluation |  |  |
+| Trần Anh Dũng | Orchestrator + handoff | `381881f`, `ad12a74` | `src/tests/test_orchestrator_handoff_trace.py` (23 ca) |
+| Nguyễn Quốc Quang Anh | Ledger + evaluation | `403cca7` | `src/tests/test_member4_host_edges.py` (7 ca pass); benchmark 4 shape và crash 20/20 |
 
 ## Cá nhân
 
