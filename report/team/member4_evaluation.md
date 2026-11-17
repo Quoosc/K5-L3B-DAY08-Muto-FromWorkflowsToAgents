@@ -18,6 +18,8 @@ as_of 2026-11-15, cùng MockLLM, pricing và evaluator.
 - Trial benchmark duy nhất fail: `R-swarm-C-002-s55`, status resolved thay vì denied.
 - A/B/C đều pass toàn bộ public; test swarm xác nhận lỗi cố ý nên student vẫn xanh.
 - Không có student_drop, nhãn hidden hoặc kết quả hidden chính thức.
+- Rà soát trước push: chạy lại `run_benchmark` và `run_suite` trên DB tạm;
+  so sánh toàn bộ object kết quả với hai JSON đã commit, đều khớp chính xác.
 
 ## Giới hạn khi diễn giải
 
@@ -45,8 +47,9 @@ mọi dữ liệu có thể có đều an toàn. Không có safety counts hidden
 
 ## Phần chưa thể chốt
 
-Lần chạy `python -m lab8.check_submission` sau khi cập nhật báo cáo: 1 FAIL
-(research card còn trống), 1 WARN (báo cáo chưa commit tại thời điểm chạy).
+Chạy lại `python -m lab8.check_submission` tại commit `5bc8076`: 1 FAIL
+(research card còn trống), 0 WARN. Host gate 91 pass và student matrix 248 pass
+được chạy lại, kết quả không đổi.
 Ba shape đạt 12/12 public ở seed 11; benchmark và crash report được checker chấp nhận.
 
 - Nhóm xác nhận đề xuất workflow trong ADR; public chưa đủ xác nhận gate hidden.

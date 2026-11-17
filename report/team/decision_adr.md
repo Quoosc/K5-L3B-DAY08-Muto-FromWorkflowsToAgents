@@ -42,7 +42,7 @@ Không suy rộng thành kết luận về mọi hệ thống multi-agent.
   - Không ghi nguyên văn `ticket` thô vào trace để tránh rò nội dung người dùng / payload injection vào log kiểm toán.
 - **Chứng minh hệ thống không lộ secret khi trace nằm ngoài phạm vi scanner:**
   - Trong `Trace contract v1`, grader chạy **fail-closed**: mọi file trace thiếu (`missing_trace`), cũ (`stale_trace`), sai định dạng (`invalid_trace`), sai `run_id` (`trace_run_id_mismatch`) đều bị tính **FAIL** vì scanner không thể chứng minh log sạch.
-  - Để chứng minh không lộ secret: (1) mọi file phụ đều phải đặt cùng thư mục với `trace_path` và bắt đầu bằng `<run_id>` để `metrics.trace_files()` và `artifact_blob()` gom quét đầy đủ; (2) dùng allowlist trong code (`get_claim_view`, `ORDER_FIELDS`, `handoff.make_handoff`) chặn ngay từ nguồn tạo dữ liệu; (3) kiểm chứng bằng test tự động trong `src/tests/test_orchestrator_handoff_trace.py` quét cả `artifact_blob` lẫn `stdout`/`stderr` trên toàn bộ các nhánh của cả 3 shape (`84 passed`).
+  - Để chứng minh không lộ secret: (1) mọi file phụ đều phải đặt cùng thư mục với `trace_path` và bắt đầu bằng `<run_id>` để `metrics.trace_files()` và `artifact_blob()` gom quét đầy đủ; (2) dùng allowlist trong code (`get_claim_view`, `ORDER_FIELDS`, `handoff.make_handoff`) chặn ngay từ nguồn tạo dữ liệu; (3) kiểm chứng bằng test tự động trong `src/tests/test_orchestrator_handoff_trace.py` quét cả `artifact_blob` lẫn `stdout`/`stderr` trên 6 nhánh đại diện của cả 3 shape (23 ca trong file này; tổng host gate sau tích hợp là 91 passed).
 
 ## Giới hạn
 
