@@ -54,8 +54,7 @@ Ba shape đạt 12/12 public ở seed 11; benchmark và crash report được ch
 
 - Nhóm xác nhận đề xuất workflow trong ADR; public chưa đủ xác nhận gate hidden.
 - Cập nhật sau đánh giá tích hợp: nhóm chọn R1; phiếu và ablation đã có tại `research_card.md`, `src/lab8/ablation_r1.py` và `src/reports/research_card_r1_ablation.json`. Cả hai cấu hình đạt 70/70; cost/success 57.190000 và 38.618571 VND mô phỏng. Thí nghiệm chỉ đổi số lời gọi đọc phụ, chưa đo scaling số agent độc lập.
-- Người 2 chưa có test mới đã thêm/sửa trong commit bàn giao; chạy test có sẵn
-  không đáp ứng nguyên văn yêu cầu đóng góp test của từng người.
+- Cập nhật từ `f974e1e`: người 2 đã thêm hai test trace/retry trong `src/tests/test_single_agent.py`; nhận xét thiếu test ở lần bàn giao trước không còn áp dụng.
 - Hash chốt, LMS và quyền truy cập người chấm phải được xác nhận khi nộp.
 
 ## Lệnh tái lập

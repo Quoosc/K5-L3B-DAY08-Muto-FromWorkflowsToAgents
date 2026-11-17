@@ -67,7 +67,7 @@ Swarm fail duy nhất ở `R-swarm-C-002-s55`: ticket khai trễ 5 ngày, order 
 
 Kết quả kiểm thử tích hợp trong workspace:
 
-Các số 91/248 dưới đây là mốc tích hợp trước bổ sung R1. Sau khi thêm ba test ablation, `python -m pytest -q` đạt **94 passed, 248 deselected**; số liệu benchmark bốn shape vẫn lấy từ report gốc.
+Các số 91/248 dưới đây là mốc tích hợp trước bổ sung R1. Sau khi thêm ba test ablation và tích hợp hai test Single Agent từ `f974e1e`, `python -m pytest -q` đạt **96 passed, 248 deselected**; số liệu benchmark bốn shape vẫn lấy từ report gốc.
 
 | Kiểm tra | Kết quả | Phạm vi |
 | --- | --- | --- |
@@ -94,7 +94,7 @@ Các lệnh tái lập benchmark, crash và kiểm bài nộp nằm trong [báo 
 | Thành viên | Đóng góp và bằng chứng |
 | --- | --- |
 | Hoàng Minh | Workflow, test `test_workflow.py` gồm 7 ca; commit `ca4e254`, `1e54dd0`. |
-| Phạm Trấn Quốc | Single với `run_react`, Budget, trace và host gate; commit `5d118a5`. Dòng đóng góp hiện ghi chạy 62 test có sẵn; chưa có test mới đã thêm/sửa trong commit bàn giao được rà. |
+| Phạm Trấn Quốc | Single với `run_react`, Budget, trace và host gate; commit `5d118a5`. Bổ sung 2 test trace an toàn và retry trong `src/tests/test_single_agent.py`, commit `f974e1e`. |
 | Trần Anh Dũng | Orchestrator, handoff/trace; test `test_orchestrator_handoff_trace.py` gồm 23 ca sau tham số hóa; commit `381881f`, `ad12a74`. |
 | Nguyễn Quốc Quang Anh | Thêm 7 ca host edge, kiểm thử tích hợp, benchmark/crash, tổng hợp metric và đề xuất ADR; commit kỹ thuật/bằng chứng `403cca7`, báo cáo `5bc8076`, rà soát `8c4205a`. |
 
