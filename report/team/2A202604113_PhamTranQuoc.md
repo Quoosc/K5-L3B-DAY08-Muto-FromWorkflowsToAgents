@@ -187,8 +187,8 @@ Báo cáo này chỉ ghi nhận phần việc và bằng chứng do Phạm Trấ
 ## 17. Bonus B2 — audit lỗi theo MAST
 
 - Thực hiện bonus B2: thêm `src/bonus/mast_tag.py` để đọc benchmark và trace, gắn nhãn lỗi theo ba nhóm MAST kèm lý do.
-- Xây dựng 15 trace case cho ba fault variant: handoff làm lệch `delay_days`, chọn clause hết hạn, và bỏ bước kiểm approval.
-- Thêm 3 test trong `src/tests/test_bonus_mast.py`; kiểm tra swarm C-002/seed 55 được phân loại là `inter_agent_misalignment / handoff-fact-drift`.
-- Sinh `src/reports/bonus_mast.json` và viết `report/team/bonus_report.md`. Agreement trên các case dựng có chủ đích là 15/15; đây không phải đánh giá độc lập/blind.
+- Bổ sung harness chạy 15 trial trên SQLite riêng cho ba lỗi có chủ đích: handoff làm lệch `delay_days`, chọn policy cũ và bỏ bước kiểm approval trước khi gọi host.
+- Thêm 4 test trong `src/tests/test_bonus_mast.py`; kiểm tra swarm C-002/seed 55 được phân loại là `inter_agent_misalignment / handoff-fact-drift`.
+- Sinh `src/reports/bonus_mast.json` và viết `report/team/bonus_report.md`. Agreement với nhãn tham chiếu tạm thời là 15/15; cần người đánh giá độc lập gán nhãn để hoàn thiện bằng chứng.
 - Commit bonus: `3b122cb`, `bbb8736`; hồ sơ/ADR: `7057abb`.
 - Codex hỗ trợ triển khai và kiểm tra; hidden grader chưa có trong workspace nên bonus gate hidden chưa xác nhận.

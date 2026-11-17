@@ -28,7 +28,7 @@ Gợi ý chia vai:
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
 | Hoàng Minh | Workflow + tích hợp | `ca4e254`, `1e54dd0` | `src/tests/test_workflow.py` (7 ca); student workflow 62 passed |
-| Phạm Trấn Quốc | Single agent + bonus B2 | `5d118a5`, `f974e1e`, `3b122cb`, `bbb8736` | `src/tests/test_single_agent.py` (2 tests); `src/tests/test_bonus_mast.py` (3 tests pass); Single Agent 62 passed |
+| Phạm Trấn Quốc | Single agent + bonus B2 | `5d118a5`, `f974e1e`, `3b122cb`, `bbb8736` | `src/tests/test_single_agent.py` (2 tests); `src/tests/test_bonus_mast.py` (4 tests pass); Single Agent 62 passed |
 | Trần Anh Dũng | Orchestrator + handoff | `381881f`, `ad12a74` | `src/tests/test_orchestrator_handoff_trace.py` (23 ca) |
 | Nguyễn Quốc Quang Anh | Ledger + evaluation | `403cca7` | `src/tests/test_member4_host_edges.py` (7 ca pass); benchmark 4 shape và crash 20/20 |
 

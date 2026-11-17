@@ -2,6 +2,7 @@ import json
 from pathlib import Path
 
 from bonus.mast_tag import analyze_manual_cases, build_report, tag_events
+from bonus.fault_trials import run_fault_trials
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -33,7 +34,6 @@ def test_report_counts_failures_and_retains_manual_audit():
     benchmark = json.loads((ROOT / "reports" / "benchmark.json").read_text(encoding="utf-8"))
     report = build_report(benchmark, ROOT / "traces", cases)
     assert report["manual_audit"]["n"] == 15
-    assert report["manual_audit"]["n"] == 15
     # The checked-in generated report records the result from the actual public trace;
     # tests remain runnable from a clean clone where traces/ is intentionally ignored.
     saved = json.loads((ROOT / "reports" / "bonus_mast.json").read_text(encoding="utf-8"))
@@ -41,3 +41,14 @@ def test_report_counts_failures_and_retains_manual_audit():
     assert (failure["run_id"], failure["group"], failure["mode"]) == (
         "R-swarm-C-002-s55", "inter_agent_misalignment", "handoff-fact-drift"
     )
+
+
+def test_fault_trials_run_on_isolated_stores_and_trigger_expected_faults():
+    trials = run_fault_trials()
+    assert len(trials) == 15
+    assert all(row['failed'] for row in trials)
+    for row in trials:
+        if row['variant'] == 'approval_check_omitted':
+            assert row['events'][0]['payload']['status'] == 'policy_denied'
+        else:
+            assert row['correct_quote'] == 35000 and row['proposed_quote'] == 0

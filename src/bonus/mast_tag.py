@@ -6,6 +6,7 @@ import json
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
+from bonus.fault_trials import run_fault_trials
 
 GROUPS = ("system_design", "inter_agent_misalignment", "task_verification")
 
@@ -96,7 +97,7 @@ def analyze_manual_cases(cases: list[dict[str, Any]]) -> dict[str, Any]:
     n = len(cases)
     groups = sorted(set(case["human_label"]["group"] for case in cases) |
                     set(row["predicted"]["group"] for row in tagged))
-    observed = correct / n if n else 0.0
+    observed = sum(row['human_label']['group'] == row['predicted']['group'] for row in tagged) / n if n else 0.0
     expected = 0.0
     if n:
         for group in groups:
@@ -104,7 +105,7 @@ def analyze_manual_cases(cases: list[dict[str, Any]]) -> dict[str, Any]:
             pred_n = sum(row["predicted"]["group"] == group for row in tagged)
             expected += (human_n / n) * (pred_n / n)
     kappa = (observed - expected) / (1 - expected) if expected < 1 else (1.0 if observed == 1 else 0.0)
-    return {"n": n, "exact_agreement": observed, "cohen_kappa_group": kappa,
+    return {"n": n, "exact_agreement": correct / n if n else 0.0, "cohen_kappa_group": kappa,
             "confusion_counts": {group: dict(Counter(row["predicted"]["group"] for row in tagged
                 if row["human_label"]["group"] == group)) for group in groups}, "cases": tagged}
 
@@ -150,12 +151,19 @@ def build_report(benchmark: dict[str, Any], trace_dir: Path, cases: list[dict[st
         counts[shape]
     for row in failures:
         counts[row.get("shape") or "unknown"][row["group"]] += 1
+    fault_trials = run_fault_trials()
+    reference_by_variant = {case['variant']: case['human_label'] for case in cases}
+    for trial in fault_trials:
+        trial['human_label'] = reference_by_variant[trial['variant']]
     return {"topic": "B2", "taxonomy": list(GROUPS), "benchmark_failures": failures,
             "failure_counts_by_shape": dict(counts),
             "benchmark_metrics_by_shape": benchmark.get("by_shape", {}),
             "safety_counts": _safety_counts(benchmark, trace_dir, public_claims or [], crash_path),
             "manual_audit": analyze_manual_cases(cases),
-            "limitations": ["Synthetic fault cases validate rules, not prevalence.",
+            "executed_fault_trials": fault_trials,
+            "executed_fault_audit": analyze_manual_cases(fault_trials),
+            "limitations": ["Reference labels are prepared with the rules and require independent human review.",
+                            "Deliberately injected faults validate rules, not prevalence.",
                             "Trace-only rules can miss failures whose evidence is not logged.",
                             "The public corpus has few failed trials; hidden failures were unavailable."]}
 

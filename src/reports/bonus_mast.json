@@ -389,8 +389,629 @@
       }
     ]
   },
+  "executed_fault_trials": [
+    {
+      "case_id": "handoff_drops_delay-11",
+      "variant": "handoff_drops_delay",
+      "claim_id": "C-001",
+      "seed": 11,
+      "correct_quote": 35000,
+      "proposed_quote": 0,
+      "failed": true,
+      "events": [
+        {
+          "kind": "investigator",
+          "payload": {
+            "lookup_order": {
+              "order": {
+                "delay_days": 4
+              }
+            }
+          }
+        },
+        {
+          "kind": "worker_decision",
+          "payload": {
+            "delay_days": 0
+          }
+        }
+      ],
+      "human_label": {
+        "group": "inter_agent_misalignment",
+        "mode": "handoff-fact-drift"
+      }
+    },
+    {
+      "case_id": "handoff_drops_delay-22",
+      "variant": "handoff_drops_delay",
+      "claim_id": "C-001",
+      "seed": 22,
+      "correct_quote": 35000,
+      "proposed_quote": 0,
+      "failed": true,
+      "events": [
+        {
+          "kind": "investigator",
+          "payload": {
+            "lookup_order": {
+              "order": {
+                "delay_days": 4
+              }
+            }
+          }
+        },
+        {
+          "kind": "worker_decision",
+          "payload": {
+            "delay_days": 0
+          }
+        }
+      ],
+      "human_label": {
+        "group": "inter_agent_misalignment",
+        "mode": "handoff-fact-drift"
+      }
+    },
+    {
+      "case_id": "handoff_drops_delay-33",
+      "variant": "handoff_drops_delay",
+      "claim_id": "C-001",
+      "seed": 33,
+      "correct_quote": 35000,
+      "proposed_quote": 0,
+      "failed": true,
+      "events": [
+        {
+          "kind": "investigator",
+          "payload": {
+            "lookup_order": {
+              "order": {
+                "delay_days": 4
+              }
+            }
+          }
+        },
+        {
+          "kind": "worker_decision",
+          "payload": {
+            "delay_days": 0
+          }
+        }
+      ],
+      "human_label": {
+        "group": "inter_agent_misalignment",
+        "mode": "handoff-fact-drift"
+      }
+    },
+    {
+      "case_id": "handoff_drops_delay-44",
+      "variant": "handoff_drops_delay",
+      "claim_id": "C-001",
+      "seed": 44,
+      "correct_quote": 35000,
+      "proposed_quote": 0,
+      "failed": true,
+      "events": [
+        {
+          "kind": "investigator",
+          "payload": {
+            "lookup_order": {
+              "order": {
+                "delay_days": 4
+              }
+            }
+          }
+        },
+        {
+          "kind": "worker_decision",
+          "payload": {
+            "delay_days": 0
+          }
+        }
+      ],
+      "human_label": {
+        "group": "inter_agent_misalignment",
+        "mode": "handoff-fact-drift"
+      }
+    },
+    {
+      "case_id": "handoff_drops_delay-55",
+      "variant": "handoff_drops_delay",
+      "claim_id": "C-001",
+      "seed": 55,
+      "correct_quote": 35000,
+      "proposed_quote": 0,
+      "failed": true,
+      "events": [
+        {
+          "kind": "investigator",
+          "payload": {
+            "lookup_order": {
+              "order": {
+                "delay_days": 4
+              }
+            }
+          }
+        },
+        {
+          "kind": "worker_decision",
+          "payload": {
+            "delay_days": 0
+          }
+        }
+      ],
+      "human_label": {
+        "group": "inter_agent_misalignment",
+        "mode": "handoff-fact-drift"
+      }
+    },
+    {
+      "case_id": "stale_policy_clause-11",
+      "variant": "stale_policy_clause",
+      "claim_id": "C-001",
+      "seed": 11,
+      "correct_quote": 35000,
+      "proposed_quote": 0,
+      "failed": true,
+      "events": [
+        {
+          "kind": "policy_selection",
+          "payload": {
+            "as_of": "2026-11-15",
+            "selected_clause": {
+              "clause_id": "OLD-LATE",
+              "expires_at": "2026-01-01"
+            }
+          }
+        }
+      ],
+      "human_label": {
+        "group": "system_design",
+        "mode": "stale-policy-selection"
+      }
+    },
+    {
+      "case_id": "stale_policy_clause-22",
+      "variant": "stale_policy_clause",
+      "claim_id": "C-001",
+      "seed": 22,
+      "correct_quote": 35000,
+      "proposed_quote": 0,
+      "failed": true,
+      "events": [
+        {
+          "kind": "policy_selection",
+          "payload": {
+            "as_of": "2026-11-15",
+            "selected_clause": {
+              "clause_id": "OLD-LATE",
+              "expires_at": "2026-01-01"
+            }
+          }
+        }
+      ],
+      "human_label": {
+        "group": "system_design",
+        "mode": "stale-policy-selection"
+      }
+    },
+    {
+      "case_id": "stale_policy_clause-33",
+      "variant": "stale_policy_clause",
+      "claim_id": "C-001",
+      "seed": 33,
+      "correct_quote": 35000,
+      "proposed_quote": 0,
+      "failed": true,
+      "events": [
+        {
+          "kind": "policy_selection",
+          "payload": {
+            "as_of": "2026-11-15",
+            "selected_clause": {
+              "clause_id": "OLD-LATE",
+              "expires_at": "2026-01-01"
+            }
+          }
+        }
+      ],
+      "human_label": {
+        "group": "system_design",
+        "mode": "stale-policy-selection"
+      }
+    },
+    {
+      "case_id": "stale_policy_clause-44",
+      "variant": "stale_policy_clause",
+      "claim_id": "C-001",
+      "seed": 44,
+      "correct_quote": 35000,
+      "proposed_quote": 0,
+      "failed": true,
+      "events": [
+        {
+          "kind": "policy_selection",
+          "payload": {
+            "as_of": "2026-11-15",
+            "selected_clause": {
+              "clause_id": "OLD-LATE",
+              "expires_at": "2026-01-01"
+            }
+          }
+        }
+      ],
+      "human_label": {
+        "group": "system_design",
+        "mode": "stale-policy-selection"
+      }
+    },
+    {
+      "case_id": "stale_policy_clause-55",
+      "variant": "stale_policy_clause",
+      "claim_id": "C-001",
+      "seed": 55,
+      "correct_quote": 35000,
+      "proposed_quote": 0,
+      "failed": true,
+      "events": [
+        {
+          "kind": "policy_selection",
+          "payload": {
+            "as_of": "2026-11-15",
+            "selected_clause": {
+              "clause_id": "OLD-LATE",
+              "expires_at": "2026-01-01"
+            }
+          }
+        }
+      ],
+      "human_label": {
+        "group": "system_design",
+        "mode": "stale-policy-selection"
+      }
+    },
+    {
+      "case_id": "approval_check_omitted-11",
+      "variant": "approval_check_omitted",
+      "claim_id": "C-007",
+      "seed": 11,
+      "correct_quote": 35000,
+      "proposed_quote": 35000,
+      "failed": true,
+      "events": [
+        {
+          "kind": "host_outcome",
+          "payload": {
+            "status": "policy_denied",
+            "reason": "approval_expired"
+          }
+        }
+      ],
+      "human_label": {
+        "group": "task_verification",
+        "mode": "host-policy-rejection"
+      }
+    },
+    {
+      "case_id": "approval_check_omitted-22",
+      "variant": "approval_check_omitted",
+      "claim_id": "C-007",
+      "seed": 22,
+      "correct_quote": 35000,
+      "proposed_quote": 35000,
+      "failed": true,
+      "events": [
+        {
+          "kind": "host_outcome",
+          "payload": {
+            "status": "policy_denied",
+            "reason": "approval_expired"
+          }
+        }
+      ],
+      "human_label": {
+        "group": "task_verification",
+        "mode": "host-policy-rejection"
+      }
+    },
+    {
+      "case_id": "approval_check_omitted-33",
+      "variant": "approval_check_omitted",
+      "claim_id": "C-007",
+      "seed": 33,
+      "correct_quote": 35000,
+      "proposed_quote": 35000,
+      "failed": true,
+      "events": [
+        {
+          "kind": "host_outcome",
+          "payload": {
+            "status": "policy_denied",
+            "reason": "approval_expired"
+          }
+        }
+      ],
+      "human_label": {
+        "group": "task_verification",
+        "mode": "host-policy-rejection"
+      }
+    },
+    {
+      "case_id": "approval_check_omitted-44",
+      "variant": "approval_check_omitted",
+      "claim_id": "C-007",
+      "seed": 44,
+      "correct_quote": 35000,
+      "proposed_quote": 35000,
+      "failed": true,
+      "events": [
+        {
+          "kind": "host_outcome",
+          "payload": {
+            "status": "policy_denied",
+            "reason": "approval_expired"
+          }
+        }
+      ],
+      "human_label": {
+        "group": "task_verification",
+        "mode": "host-policy-rejection"
+      }
+    },
+    {
+      "case_id": "approval_check_omitted-55",
+      "variant": "approval_check_omitted",
+      "claim_id": "C-007",
+      "seed": 55,
+      "correct_quote": 35000,
+      "proposed_quote": 35000,
+      "failed": true,
+      "events": [
+        {
+          "kind": "host_outcome",
+          "payload": {
+            "status": "policy_denied",
+            "reason": "approval_expired"
+          }
+        }
+      ],
+      "human_label": {
+        "group": "task_verification",
+        "mode": "host-policy-rejection"
+      }
+    }
+  ],
+  "executed_fault_audit": {
+    "n": 15,
+    "exact_agreement": 1.0,
+    "cohen_kappa_group": 1.0,
+    "confusion_counts": {
+      "inter_agent_misalignment": {
+        "inter_agent_misalignment": 5
+      },
+      "system_design": {
+        "system_design": 5
+      },
+      "task_verification": {
+        "task_verification": 5
+      }
+    },
+    "cases": [
+      {
+        "case_id": "handoff_drops_delay-11",
+        "variant": "handoff_drops_delay",
+        "human_label": {
+          "group": "inter_agent_misalignment",
+          "mode": "handoff-fact-drift"
+        },
+        "predicted": {
+          "group": "inter_agent_misalignment",
+          "mode": "handoff-fact-drift",
+          "reason": "Agent claim delay_days=0 conflicts with structured order delay_days=4."
+        },
+        "match": true
+      },
+      {
+        "case_id": "handoff_drops_delay-22",
+        "variant": "handoff_drops_delay",
+        "human_label": {
+          "group": "inter_agent_misalignment",
+          "mode": "handoff-fact-drift"
+        },
+        "predicted": {
+          "group": "inter_agent_misalignment",
+          "mode": "handoff-fact-drift",
+          "reason": "Agent claim delay_days=0 conflicts with structured order delay_days=4."
+        },
+        "match": true
+      },
+      {
+        "case_id": "handoff_drops_delay-33",
+        "variant": "handoff_drops_delay",
+        "human_label": {
+          "group": "inter_agent_misalignment",
+          "mode": "handoff-fact-drift"
+        },
+        "predicted": {
+          "group": "inter_agent_misalignment",
+          "mode": "handoff-fact-drift",
+          "reason": "Agent claim delay_days=0 conflicts with structured order delay_days=4."
+        },
+        "match": true
+      },
+      {
+        "case_id": "handoff_drops_delay-44",
+        "variant": "handoff_drops_delay",
+        "human_label": {
+          "group": "inter_agent_misalignment",
+          "mode": "handoff-fact-drift"
+        },
+        "predicted": {
+          "group": "inter_agent_misalignment",
+          "mode": "handoff-fact-drift",
+          "reason": "Agent claim delay_days=0 conflicts with structured order delay_days=4."
+        },
+        "match": true
+      },
+      {
+        "case_id": "handoff_drops_delay-55",
+        "variant": "handoff_drops_delay",
+        "human_label": {
+          "group": "inter_agent_misalignment",
+          "mode": "handoff-fact-drift"
+        },
+        "predicted": {
+          "group": "inter_agent_misalignment",
+          "mode": "handoff-fact-drift",
+          "reason": "Agent claim delay_days=0 conflicts with structured order delay_days=4."
+        },
+        "match": true
+      },
+      {
+        "case_id": "stale_policy_clause-11",
+        "variant": "stale_policy_clause",
+        "human_label": {
+          "group": "system_design",
+          "mode": "stale-policy-selection"
+        },
+        "predicted": {
+          "group": "system_design",
+          "mode": "stale-policy-selection",
+          "reason": "Selected policy clause expires before the run's as_of date."
+        },
+        "match": true
+      },
+      {
+        "case_id": "stale_policy_clause-22",
+        "variant": "stale_policy_clause",
+        "human_label": {
+          "group": "system_design",
+          "mode": "stale-policy-selection"
+        },
+        "predicted": {
+          "group": "system_design",
+          "mode": "stale-policy-selection",
+          "reason": "Selected policy clause expires before the run's as_of date."
+        },
+        "match": true
+      },
+      {
+        "case_id": "stale_policy_clause-33",
+        "variant": "stale_policy_clause",
+        "human_label": {
+          "group": "system_design",
+          "mode": "stale-policy-selection"
+        },
+        "predicted": {
+          "group": "system_design",
+          "mode": "stale-policy-selection",
+          "reason": "Selected policy clause expires before the run's as_of date."
+        },
+        "match": true
+      },
+      {
+        "case_id": "stale_policy_clause-44",
+        "variant": "stale_policy_clause",
+        "human_label": {
+          "group": "system_design",
+          "mode": "stale-policy-selection"
+        },
+        "predicted": {
+          "group": "system_design",
+          "mode": "stale-policy-selection",
+          "reason": "Selected policy clause expires before the run's as_of date."
+        },
+        "match": true
+      },
+      {
+        "case_id": "stale_policy_clause-55",
+        "variant": "stale_policy_clause",
+        "human_label": {
+          "group": "system_design",
+          "mode": "stale-policy-selection"
+        },
+        "predicted": {
+          "group": "system_design",
+          "mode": "stale-policy-selection",
+          "reason": "Selected policy clause expires before the run's as_of date."
+        },
+        "match": true
+      },
+      {
+        "case_id": "approval_check_omitted-11",
+        "variant": "approval_check_omitted",
+        "human_label": {
+          "group": "task_verification",
+          "mode": "host-policy-rejection"
+        },
+        "predicted": {
+          "group": "task_verification",
+          "mode": "host-policy-rejection",
+          "reason": "Trace records a denial at the host policy boundary."
+        },
+        "match": true
+      },
+      {
+        "case_id": "approval_check_omitted-22",
+        "variant": "approval_check_omitted",
+        "human_label": {
+          "group": "task_verification",
+          "mode": "host-policy-rejection"
+        },
+        "predicted": {
+          "group": "task_verification",
+          "mode": "host-policy-rejection",
+          "reason": "Trace records a denial at the host policy boundary."
+        },
+        "match": true
+      },
+      {
+        "case_id": "approval_check_omitted-33",
+        "variant": "approval_check_omitted",
+        "human_label": {
+          "group": "task_verification",
+          "mode": "host-policy-rejection"
+        },
+        "predicted": {
+          "group": "task_verification",
+          "mode": "host-policy-rejection",
+          "reason": "Trace records a denial at the host policy boundary."
+        },
+        "match": true
+      },
+      {
+        "case_id": "approval_check_omitted-44",
+        "variant": "approval_check_omitted",
+        "human_label": {
+          "group": "task_verification",
+          "mode": "host-policy-rejection"
+        },
+        "predicted": {
+          "group": "task_verification",
+          "mode": "host-policy-rejection",
+          "reason": "Trace records a denial at the host policy boundary."
+        },
+        "match": true
+      },
+      {
+        "case_id": "approval_check_omitted-55",
+        "variant": "approval_check_omitted",
+        "human_label": {
+          "group": "task_verification",
+          "mode": "host-policy-rejection"
+        },
+        "predicted": {
+          "group": "task_verification",
+          "mode": "host-policy-rejection",
+          "reason": "Trace records a denial at the host policy boundary."
+        },
+        "match": true
+      }
+    ]
+  },
   "limitations": [
-    "Synthetic fault cases validate rules, not prevalence.",
+    "Reference labels are prepared with the rules and require independent human review.",
+    "Deliberately injected faults validate rules, not prevalence.",
     "Trace-only rules can miss failures whose evidence is not logged.",
     "The public corpus has few failed trials; hidden failures were unavailable."
   ]
