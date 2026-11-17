@@ -2,17 +2,19 @@
 
 ## Thông tin nhóm
 
-- Tên nhóm:
+- Tên nhóm: Chưa cung cấp
 - Lớp: L3A
-- Repo nhóm: `K5-L3A-DAY08-TenNhom-FromWorkflowsToAgents` (xem [SUBMISSION.md](SUBMISSION.md))
-- URL repo, nhánh nộp, commit chốt:
+- Repo nhóm: `K5-L3B-DAY08-Muto-FromWorkflowsToAgents`
+- URL repo, nhánh nộp, commit chốt: https://github.com/Quoosc/K5-L3B-DAY08-Muto-FromWorkflowsToAgents (nhánh `main`; commit chốt sẽ cập nhật sau khi commit/push)
 
 ## Thành viên
 
 | STT | Họ tên | MSSV | Email | GitHub | Vai trò |
 | --: | ------ | ---- | ----- | ------ | ------- |
-|   1 |        |      |       |        |         |
-|   2 |        |      |       |        |         |
+|   1 | Hoàng Minh | 2A202604103 | [minh03forwork@gmail.com](mailto:minh03forwork@gmail.com) | [WorkOfMinh](https://github.com/WorkOfMinh) | Workflow + tích hợp |
+|   2 | Phạm Trấn Quốc | 2A202604113 | [phamquoc896@gmail.com](mailto:phamquoc896@gmail.com) | [Quoosc](https://github.com/Quoosc) | Single agent |
+|   3 | Trần Anh Dũng | 2A202604037 | [dungkid01@gmail.com](mailto:dungkid01@gmail.com) | [tad-4963](https://github.com/tad-4963) | Orchestrator + handoff |
+|   4 | Nguyễn Quốc Quang Anh | 2A202604120 | [nguyenquocquanganh28@gmail.com](mailto:nguyenquocquanganh28@gmail.com) | [QuangAnh28](https://github.com/QuangAnh28) | Ledger + evaluation |
 
 Gợi ý chia vai:
 
@@ -25,7 +27,10 @@ Gợi ý chia vai:
 
 | Người | Vai | Commit | Test đã thêm hoặc sửa |
 | --- | --- | --- | --- |
-| | | | |
+| Hoàng Minh | Workflow + tích hợp | Chưa có commit | Chưa bàn giao test; cập nhật tên test sau khi có |
+| Phạm Trấn Quốc | Single agent | Chưa có commit | Chưa bàn giao test; cập nhật tên test sau khi có |
+| Trần Anh Dũng | Orchestrator + handoff | Chưa có commit | Chưa bàn giao test; cập nhật tên test sau khi có |
+| Nguyễn Quốc Quang Anh | Ledger + evaluation | Chưa commit | `src/tests/test_member4_host_edges.py` (đã thêm, 7 ca pass) |
 
 ## Cá nhân
 
